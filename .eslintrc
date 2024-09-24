@@ -1,0 +1,230 @@
+/*
+ * rule enabling options
+ * 0=off, 1=warn, 2=error
+ */
+{
+  "extends": [
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier",
+    "plugin:react-hooks/recommended",
+    "plugin:import/typescript"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "jsx-a11y",
+    "react",
+    "react-hooks",
+    "lodash"
+  ],
+  "root": true,
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "format": [
+          "PascalCase"
+        ],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
+      }
+    ],
+    "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/no-explicit-any": 2,
+    "@typescript-eslint/no-floating-promises": 0,
+    "@typescript-eslint/no-inferrable-types": 2,
+    "@typescript-eslint/no-unsafe-assignment": 0,
+    "@typescript-eslint/no-unsafe-member-access": 0,
+    "@typescript-eslint/no-unsafe-return": 0,
+    "@typescript-eslint/no-unused-vars": 2,
+    // not needed with noImplicitAny compile
+    "@typescript-eslint/typedef": 0,
+    "@typescript-eslint/unbound-method": 0,
+    "array-callback-return": 0,
+    "arrow-body-style": 0,
+    "class-methods-use-this": 0,
+    "consistent-return": 0,
+    "eqeqeq": [
+      "warn",
+      "always"
+    ],
+    "func-names": 0,
+    "import/extensions": 0,
+    "import/no-cycle": [
+      2,
+      {
+        "maxDepth": 1
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      0,
+      {
+        "devDependencies": true
+      }
+    ],
+    "import/order": [
+      2,
+      {
+        "groups": [
+          "index",
+          [
+            "builtin",
+            "external"
+          ],
+          "internal",
+          "parent",
+          "sibling"
+        ],
+        "newlines-between": "always"
+      }
+    ],
+    "import/prefer-default-export": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/control-has-associated-label": 0,
+    "jsx-a11y/href-no-hash": 0,
+    "jsx-a11y/label-has-associated-control": 0,
+    "jsx-a11y/label-has-for": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "lines-between-class-members": 0,
+    "lodash/import-scope": [
+      2,
+      "method"
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 120,
+        "ignoreComments": true,
+        "ignoreUrls": true,
+        "ignorePattern": "^\\s*var\\s.+=\\s*require\\s*\\(",
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "info",
+          "assert",
+          "debug",
+          "error",
+          "warn"
+        ]
+      }
+    ],
+    "no-multiple-empty-lines": "error",
+    "no-param-reassign": [
+      1,
+      {
+        "props": false
+      }
+    ],
+    "no-plusplus": 0,
+    /** to enforce tree-like folder structures */
+    "no-restricted-imports": [
+      2,
+      {
+        "patterns": [
+          "..*"
+        ]
+      }
+    ],
+    "no-underscore-dangle": 0,
+    "react-hooks/exhaustive-deps": 2,
+    "react-hooks/rules-of-hooks": 2,
+    "react/button-has-type": 0,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ],
+    "react/jsx-first-prop-new-line": [
+      1,
+      "multiline"
+    ],
+    "react/jsx-indent-props": [
+      1,
+      "first"
+    ],
+    "react/jsx-key": [
+      2,
+      {
+        "checkFragmentShorthand": true
+      }
+    ],
+    "react/jsx-max-props-per-line": [
+      1,
+      {
+        "maximum": 1,
+        "when": "multiline"
+      }
+    ],
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-tag-spacing": [
+      1,
+      {
+        "beforeSelfClosing": "allow"
+      }
+    ],
+    "react/jsx-uses-react": "off",
+    "react/jsx-wrap-multilines": [
+      1,
+      {
+        "arrow": false,
+        "assignment": "parens",
+        "return": "parens-new-line"
+      }
+    ],
+    "react/no-array-index-key": 0,
+    "react/no-multi-comp": 0,
+    "react/no-unused-prop-types": 1,
+    "react/prefer-stateless-function": 0,
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": "off",
+    "react/self-closing-comp": [
+      "warn",
+      {
+        "component": true,
+        "html": false
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ],
+        "moduleDirectory": [
+          "node_modules",
+          "src/"
+        ]
+      }
+    },
+    "react": {
+      "version": "detect"
+    }
+  }
+}

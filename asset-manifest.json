@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/crypto-rates/static/js/main.6eb50edd.js",
+    "static/js/453.daa7c88e.chunk.js": "/crypto-rates/static/js/453.daa7c88e.chunk.js",
+    "index.html": "/crypto-rates/index.html",
+    "main.6eb50edd.js.map": "/crypto-rates/static/js/main.6eb50edd.js.map",
+    "453.daa7c88e.chunk.js.map": "/crypto-rates/static/js/453.daa7c88e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.6eb50edd.js"
+  ]
+}

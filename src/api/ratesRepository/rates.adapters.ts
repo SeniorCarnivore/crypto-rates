@@ -7,6 +7,7 @@ import { TFetchRatesResponseDTO } from "./rates.api.types";
 export const mapRates = (data: TFetchRatesResponseDTO): ICoinList => {
     const keys = Object.keys(data) as ECoinName[];
 
+    // Guys without USD ref at all should be skipped here
     return keys.map(name => {
 
         return ({

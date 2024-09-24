@@ -1,31 +1,35 @@
 import { FC } from 'react';
 import { observer } from 'mobx-react-lite';
+import { useParams } from "react-router-dom";
 
+import { useStore } from 'shared/hooks/useStore';
 import { ECoinName } from 'shared/types';
-import { ERateNA } from 'types/rates/Rates';
 
-interface IRatesItemProps {
-    name: ECoinName;
-    rate: number | ERateNA.NotAvaliable,
-    ask: number | ERateNA.NotAvaliable,
-    bid: number | ERateNA.NotAvaliable,
-    diff24h: number | ERateNA.NotAvaliable
-}
+import { GoBackIcon, GoBackLink, TableRow, Table, TdLabel } from './StyledRatesItem';
 
-const RatesItem: FC<IRatesItemProps> = (props) => {
-    const { name, rate, ask, bid, diff24h } = props;
+const RatesItem: FC = () => {
+    const params = useParams();
+    const { ratesStore } = useStore();
+    const { findRates } = ratesStore;
+    const { coin } = params;
+    const rates = findRates(coin as ECoinName);
+    // TODO: inconsistent "rates is undefined" error
+    const { name, rate, ask, bid, diff24h } = rates;
 
     return (
-        // Yep, copypaste of header, too bad :(
-        // Guys without USD ref at all should be skipped in the adapter layer
-        <div style={{ marginBottom: 10, display: 'flex' }}>
-            <div style={{ width: 70, textTransform: 'uppercase', paddingRight: 10 }}><a href="#">{name}</a></div>
-            {/* It's better to map all values into strings (untill we don't need calculations); */}
-            {/* Or we could do it via model.view's */}
-            <div title={String(rate)} style={{ width: 100, paddingRight: 10, overflow: 'hidden', textOverflow: 'ellipsis' }}>{rate}</div>
-            <div title={String(ask)} style={{ width: 100, paddingRight: 10, overflow: 'hidden', textOverflow: 'ellipsis' }}>{ask}</div>
-            <div title={String(bid)} style={{ width: 100, paddingRight: 10, overflow: 'hidden', textOverflow: 'ellipsis' }}>{bid}</div>
-            <div title={String(diff24h)} style={{ width: 100, paddingRight: 10, overflow: 'hidden', textOverflow: 'ellipsis' }}>{diff24h}</div>
+        <div style={{ fontFamily: 'Helvetica, "Trebuchet MS", Verdana, sans-serif', padding: 10 }}>
+            <GoBackLink to="/">
+                <GoBackIcon>👍</GoBackIcon>
+                Go Back
+            </GoBackLink>
+
+            <Table>
+                <TableRow><TdLabel>Name:</TdLabel>{name}</TableRow>
+                <TableRow><TdLabel>Rate:</TdLabel>{rate}</TableRow>
+                <TableRow><TdLabel>Ask:</TdLabel>{ask}</TableRow>
+                <TableRow><TdLabel>Bid:</TdLabel>{bid}</TableRow>
+                <TableRow><TdLabel>Diff24h:</TdLabel>{diff24h}</TableRow>
+            </Table>
         </div>
     );
 };
